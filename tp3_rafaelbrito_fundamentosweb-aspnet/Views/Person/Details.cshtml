@@ -1,0 +1,13 @@
+﻿@model tp3_rafaelbrito_fundamentosweb_aspnet.Models.Person;
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h4>@Html.DisplayFor(modelItem => modelItem.FirstName) @Html.DisplayFor(modelItem => modelItem.LastName)</h4>
+<hr />
+<span>Aniversário: @Html.DisplayFor(modelItem => modelItem.Birthday)</span>
+
+<div>
+    <a asp-action="Index">Voltar para o Dashboard</a>
+</div>

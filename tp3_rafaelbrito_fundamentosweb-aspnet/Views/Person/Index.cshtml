@@ -1,0 +1,72 @@
+﻿@model IEnumerable<tp3_rafaelbrito_fundamentosweb_aspnet.Models.Person>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Dashboard</h1>
+
+<p>
+    <a asp-action="New">Adicionar Pessoa</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.Birthday)
+            </th>
+            <th scope="col">
+                Ações
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @try
+        {
+            if(Model.Count() == 0)
+            {
+        <tr>
+            <td>
+                Não há usuários cadastrados :D
+            </td>
+        </tr>
+            }
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FirstName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LastName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Birthday)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { item.Id }) |
+                        @Html.ActionLink("Details", "Details", new { item.Id }) |
+                        @Html.ActionLink("Delete", "Delete", new { item.Id })
+                    </td>
+                </tr>
+            }
+        } catch(Exception exception)
+        {
+            Console.WriteLine(exception.Message);
+            return;
+        }
+    </tbody>
+</table>
